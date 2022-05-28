@@ -1,0 +1,53 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sensorredis
+  namespace: sensorredis
+  labels:
+    app: sensorredis
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: sensorredis
+  template:
+    metadata:
+      labels:
+        app: sensorredis
+    spec:
+      #securityContext:
+      #  runAsNonRoot: true
+      #  runAsUser: 1000
+      containers:
+      - name: sensorredis
+        image: localhost:32000/sensor-redis
+        imagePullPolicy: IfNotPresent
+        volumeMounts:
+          - name: dev
+            mountPath: /dev
+        env:
+        - name: REDIS_BROKER
+          value: "redis.redis"
+        - name: REDIS_PORT
+          value: "6379"
+        - name: REDIS_DB
+          value: "0"
+        - name: REDIS_TIMEOUT
+          value: "60"
+        - name: LOCATION
+          value: "bobbins"
+        - name: ZONE
+          value: "inside"
+        - name: MULTIPLIER
+          value: "1"
+        securityContext:
+          privileged: true
+          runAsNonRoot: true
+          runAsGroup: 998
+          runAsUser: 1000
+          #fsGroup: 998 
+      restartPolicy: Always
+      volumes:
+        - name: dev
+          hostPath:
+            path: /dev

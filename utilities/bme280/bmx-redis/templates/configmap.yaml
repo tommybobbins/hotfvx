@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: hotf-config
+  namespace: {{ .Release.Namespace }}
+data:
+  HOTF_DEBUG: "true"
+  HOTF_REDISHOST: "redis.redis"
+  HOTF_REDISPORT: "6379"
+  HOTF_REDISDB: "0"
+  HOTF_REDISTIMEOUT: "60"
+  HOTF_REDISTTL: "60m"
+  HOTF_LOCATION: "bobbins"
+  HOTF_ZONE: "inside"
+  HOTF_MULTIPLIER: "1"
+  HOTF_RELAYHEAT: "http://192.168.1.213/relay/0"
+  HOTF_RELAYWATER: "http://192.168.1.56/relay/0"
+  HOTF_RADICALE_URL: "http://radicale.radicale:5232/hotf/"
+  HOTF_RADICALE_USER: "hotf"
+  HOTF_RADICALE_PASS: "hotf"

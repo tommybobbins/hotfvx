@@ -1,0 +1,25 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: busybox-sleep
+  namespace: thermo
+spec:
+  containers:
+  - name: busybox
+    image: busybox
+    args:
+    - sleep
+    - "1000000"
+    env:
+      - name: CONFIG_FILE
+        value: "/data/pithermostat.conf"
+    volumeMounts:
+      - name: config-data
+        mountPath: /data
+  volumes:
+    - name: config-data
+      configMap:
+        name: proctemps-config
+        items: 
+        - key: pithermostat.conf
+          path: pithermostat.conf

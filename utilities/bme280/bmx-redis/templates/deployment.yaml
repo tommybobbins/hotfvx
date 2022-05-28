@@ -1,0 +1,38 @@
+
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: bmx-redis
+  namespace: {{ .Release.Namespace }}
+spec:
+  schedule: "*/5 * * * *"
+  concurrencyPolicy: "Forbid"
+  failedJobsHistoryLimit: 3
+  successfulJobsHistoryLimit: 1
+  jobTemplate:
+    spec:
+      #securityContext:
+      #  runAsNonRoot: true
+      #  runAsUser: 1000
+      template:
+        spec:
+          containers:
+          - name: bmxredis
+            image: docker-registry.docker-registry:32000/bmx-redis:0.05
+            imagePullPolicy: IfNotPresent
+            volumeMounts:
+              - name: dev
+                mountPath: /dev
+            envFrom:
+            - configMapRef:
+                name: hotf-config
+            securityContext:
+              privileged: true
+              runAsNonRoot: false
+              #runAsGroup: 1000
+              #runAsUser: 1000
+          restartPolicy: OnFailure
+          volumes:
+            - name: dev
+              hostPath:
+                path: /dev

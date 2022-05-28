@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: proctemps
+  namespace: thermo
+  labels:
+    app: proctemps
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: proctemps
+  template:
+    metadata:
+      labels:
+        app: proctemps
+    spec:
+      containers:
+      - name: proctemps
+        image: localhost:32000/proc-temps
+        imagePullPolicy: IfNotPresent
+        env:
+        - name: CONFIG_FILE
+          value: "/data/pithermostat.conf"
+        volumeMounts:
+        - name: config-data
+          mountPath: /data
+      restartPolicy: Always
+      volumes:
+      - name: config-data
+        configMap:
+          name: proctemps-config
+          items: 
+          - key: pithermostat.conf
+            path: pithermostat.conf 
