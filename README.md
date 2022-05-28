@@ -1,29 +1,35 @@
-# todo
+# HOTFv3
 
-####Job1 - check relays - relayread-redis
-####Read relay state
-####Write relay state to relay/type/state
+House of the future code based. Replacement for hotfv3 repository
+Contains radicale forked from (h3ndrk/radicale-k8s)[https://github.com/h3ndrk/radicale-k8s]
 
-#Job2 - thermo calendar
-#Read thermo calendar from radicale - populate redis
-#Read water calendar - populate redis
 
-#Job3 - water
-#Read redis for water
-#Read user override for water user/water/requested
-#Determine if boiler should be on
-#Write requested state to relay/water/requestedstate
+## ToDo
 
-Job 4
+##Job1 - check relays - relayread-redis
+Read relay state
+Write relay state to relay/type/state
+
+##Job2 - thermo calendar
+Read thermo calendar from radicale - populate redis
+Read water calendar - populate redis
+
+##Job3 - water
+Read redis for water
+Read user override for water user/water/requested
+Determine if boiler should be on
+Write requested state to relay/water/requestedstate
+
+##Job 4
 Move ingress to it's own namespace to speak to the services inside the other namespaces
 
-Job 5 - thermostat
+##Job 5 - thermostat
 Read thermo from redis
 Read temperatures from redis (calendar and user/heat/requested)
 Determine if boiler should be on
 Write requested state to relay/heat/requestedstate
 
-Job6 - update relays
+##Job 6 - update relays
 Compare relay/type/state to relay/type/requested. Adjust if different.
 Write relay state to relay/type/state
 
