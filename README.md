@@ -1,7 +1,7 @@
 # HOTFv3
 
 House of the future code based. Replacement for hotfv3 repository
-Contains radicale forked from (h3ndrk/radicale-k8s)[https://github.com/h3ndrk/radicale-k8s]
+Contains radicale forked from [h3ndrk/radicale-k8s](https://github.com/h3ndrk/radicale-k8s)
 
 
 ## ToDo
