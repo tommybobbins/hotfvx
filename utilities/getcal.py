@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 import caldav
 import sys
-url='http://hotf/hotf/'
+url='http://hotfcal/'
 username='hotf'
 password='hotf'
 client = caldav.DAVClient(url=url, username=username, password=password)

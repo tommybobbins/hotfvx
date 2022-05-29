@@ -3,8 +3,21 @@
 House of the future code based. Replacement for hotfv3 repository
 Contains radicale forked from [h3ndrk/radicale-k8s](https://github.com/h3ndrk/radicale-k8s)
 
+Built against minikube:
+
+     
+    # wget https://get.helm.sh/helm-v3.9.0-linux-arm64.tar.gz
+    # minikube addons enable ingress
+
+    # echo "127.0.0.1 localhost hotfv3 docker-registry.docker-registry hotf radicale hotfcal" >>/etc/hosts
+
 
 ## ToDo
+
+## Use Minkube registry instead of docker-registry
+
+Workin progress, see https://minikube.sigs.k8s.io/docs/handbook/pushing/
+
 
 ##Job1 - check relays - relayread-redis
 Read relay state

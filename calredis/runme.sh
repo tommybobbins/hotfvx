@@ -1,2 +1,0 @@
-docker run -e REDIS_BROKER=192.168.1.222 -e REDIS_PORT=30379 -e REDIS_DB=0 -e REDIS_TIMEOUT=60 -e LOCATION=bobbins -e ZONE=inside -e MULTIPLIER=1 --device /dev/i2c-1 e8936584d391
-

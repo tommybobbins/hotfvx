@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: radicale
+  namespace: {{ .Release.Namespace }}
+spec:
+  ports:
+  - name: dav
+    targetPort: 5232
+    port: 5232
+    #nodePort: 30222
+    protocol: TCP
+  selector:
+    app: radicale
+      #type: NodePort
+

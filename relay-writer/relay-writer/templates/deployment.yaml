@@ -1,0 +1,25 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: relay-writer
+  namespace: {{ .Release.Namespace }}
+spec:
+  schedule: "*/2 * * * *"
+  concurrencyPolicy: "Forbid"
+  failedJobsHistoryLimit: 2
+  successfulJobsHistoryLimit: 1
+  jobTemplate:
+    spec:
+      #securityContext:
+      #  runAsNonRoot: true
+      #  runAsUser: 1000
+      template:
+        spec:
+          containers:
+          - name: relay-writer
+            image: localhost:32000/relay-writer:0.01
+            imagePullPolicy: IfNotPresent
+            envFrom:
+            - configMapRef:
+                name: hotf-config
+          restartPolicy: OnFailure

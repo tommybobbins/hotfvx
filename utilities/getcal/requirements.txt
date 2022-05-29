@@ -1,5 +1,0 @@
-redis
-urllib3
-configparser
-caldav
-lxml

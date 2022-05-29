@@ -3,11 +3,12 @@ import caldav
 import random
 from datetime import datetime, date
 import sys
-url='http://hotf/hotf/'
+url='http://hotf/'
 username='hotf'
 password='hotf'
 client = caldav.DAVClient(url=url, username=username, password=password)
 #client = caldav.DAVClient(url=url)
+#print (client.principal())
 my_principal = client.principal()
 ## The principals calendars can be fetched like this:
 print (my_principal)
