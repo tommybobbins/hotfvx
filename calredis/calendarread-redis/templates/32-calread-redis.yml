@@ -2,7 +2,7 @@ apiVersion: batch/v1
 kind: CronJob
 metadata:
   name: calreadredis
-  namespace: sensorredis
+  namespace: {{ .Release.Namespace }}
   labels:
     app: calreadredis
 spec:

@@ -3,7 +3,7 @@ import caldav
 import random
 from datetime import datetime, date
 import sys
-url='http://hotf/'
+url='http://hotfcal/'
 username='hotf'
 password='hotf'
 client = caldav.DAVClient(url=url, username=username, password=password)
